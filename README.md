@@ -20,7 +20,46 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+The Applocate gem will allow you to register devices with Applocate and then allow you to
+push down restrictions profiles, app installations.
+
+In order to access the API you will require a private token and a key.
+
+You can set them as ENV variables ```APPLOCATE_TOKEN``` and ```APPLOCATE_SECRET``` or you can specify them in your
+config as an initializer file. If you are connecting to a private Applocate server you can specify the base URL of
+the server with ```APPLOCATE_BASE_URL```
+
+```ruby
+#/config/initializers/applocate.rb
+
+Applocate.configure do |config|
+  config.token = ENV['APPLOCATE_TOKEN']
+  config.secret = ENV['APPLOCATE_SECRET']
+  config.base_url = ENV['BASE_URL']
+end
+```
+
+Currently the following methods are supported:
+
+```ruby
+# expected options -> { uuid: "ABCD-DCCDDC-12394812389-CDC" }
+Applocate::API.restrict(options)
+# returns a list (Array) of UUIDs with their status from the command.
+
+# expected options -> { uuid: "ABCD-DCCDDC-12394812389-CDC" }
+Applocate::API.unrestrict(options)
+# returns a list (Array) of UUIDs with their status from the command.
+
+
+# expected options -> { uuid: "ABCD-DCCDDC-12394812389-CDC", itunes_id: "003274092" }
+Applocate::API.install_app(options)
+# returns a list (Array) of UUIDs with their status from the command.
+
+
+# expected options -> { uuid: "ABCD-DCCDDC-12394812389-CDC" }
+Applocate::API.app_list(options)
+# returns a list (Array) of UUIDs with their apps.
+```
 
 ## Contributing
 
