@@ -1,0 +1,16 @@
+before_install:
+  - gem install bundler
+  - gem install rake
+
+language: ruby
+
+cache: bundler
+
+rvm:
+  - 2.1.5
+  - 2.2.0
+
+notifications:
+  email: false
+
+script: bundle exec rake

@@ -1,0 +1,82 @@
+AllCops:
+  Exclude:
+    - vendor/**/*
+    - bin/**/*
+    - db/**/*
+    - Guardfile
+    - applocate.gemspec
+
+Style/RescueModifier:
+  Enabled: false
+
+LineLength:
+  Enabled: false
+
+MethodLength:
+  Max: 16
+  Enabled: false
+
+ClassLength:
+  Enabled: true
+
+Metrics/AbcSize:
+  Max: 32
+
+Documentation:
+  # don't require classes to be documented
+  Enabled: false
+
+CollectionMethods:
+  # don't prefer map to collect, recuce to inject
+  Enabled: true
+
+Encoding:
+  # no need to always specify encoding
+  Enabled: false
+
+StringLiterals:
+  # use single or double-quoted strings, as you please
+  Enabled: false
+
+PerlBackrefs:
+  # TODO: regular expression matching with $1, $2, etc.
+  Enabled: false
+
+BlockNesting:
+  # TODO: fix too much nesting
+  Max: 4
+
+Blocks:
+  # allow multi-line blocks like expect {}
+  Enabled: false
+
+WordArray:
+  # %w vs. ['', ...]
+  Enabled: false
+
+CyclomaticComplexity:
+  Enabled: false
+
+DoubleNegation:
+  Enabled: false
+
+RedundantSelf:
+  Enabled: false
+
+PredicateName:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  MaxLineLength: 120
+
+Style/BracesAroundHashParameters:
+  Enabled: false
+
+Style/TrivialAccessors:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Lint/UnusedBlockArgument:
+  Enabled: false
