@@ -1,6 +1,6 @@
 # Applocate
 
-TODO: Write a gem description
+This gem provides access to the Applocate API.
 
 ## Installation
 
