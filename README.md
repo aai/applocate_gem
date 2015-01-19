@@ -2,6 +2,8 @@
 
 This gem provides access to the Applocate API.
 
+[![Build Status](https://travis-ci.org/aai/applocate.svg?branch=master)](https://travis-ci.org/aai/applocate)
+
 ## Installation
 
 Add this line to your application's Gemfile:
