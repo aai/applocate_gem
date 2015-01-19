@@ -10,8 +10,8 @@ describe Applocate::API do
       end
     }
 
-    it 'uses the configured key' do
-      expect(subject.key).to eq('token')
+    it 'uses the configured token' do
+      expect(subject.token).to eq('token')
     end
     it 'uses the configured secret' do
       expect(subject.secret).to eq('secret')
@@ -27,7 +27,7 @@ describe Applocate::API do
       results = []
 
       Applocate::API.should_receive(:post)
-        .with('/deploy/profile', body: device_list.to_json)
+        .with('/deploy/profile', { body: device_list.to_json }, Applocate::API.authentication)
         .and_return(results)
 
       Applocate::API.restrict device_list
@@ -39,7 +39,7 @@ describe Applocate::API do
         results = []
 
         Applocate::API.should_receive(:delete)
-          .with('/deploy/profile', body: device_list.to_json)
+          .with('/deploy/profile', { body: device_list.to_json }, Applocate::API.authentication)
           .and_return(results)
 
         Applocate::API.unrestrict device_list
@@ -48,11 +48,11 @@ describe Applocate::API do
 
     describe '.install_app' do
       it 'removes the restrictions profile from devices' do
-        options = { uuid: "ABCD-DCCDDC-12394812389-CDC", itunes_id: "00123487" }
+        options = { uuid: "ABCD-DCCDDC-12394812389-CDC", itunes_id: "284910350" }
         results = []
 
         Applocate::API.should_receive(:post)
-          .with('/deploy/app', body: options.to_json)
+          .with('/deploy/app', { body: options.to_json }, Applocate::API.authentication)
           .and_return(results)
 
         Applocate::API.install_app options
@@ -65,7 +65,7 @@ describe Applocate::API do
         results = []
 
         Applocate::API.should_receive(:post)
-          .with('/deploy/app_list', body: device_list.to_json)
+          .with('/deploy/app_list', { body: device_list.to_json }, Applocate::API.authentication)
           .and_return(results)
 
         Applocate::API.app_list device_list

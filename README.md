@@ -37,7 +37,6 @@ the server with ```APPLOCATE_BASE_URL```
 Applocate.configure do |config|
   config.token = ENV['APPLOCATE_TOKEN']
   config.secret = ENV['APPLOCATE_SECRET']
-  config.base_url = ENV['BASE_URL']
 end
 ```
 
@@ -61,6 +60,15 @@ Applocate::API.install_app(options)
 # expected options -> { uuid: "ABCD-DCCDDC-12394812389-CDC" }
 Applocate::API.app_list(options)
 # returns a list (Array) of UUIDs with their apps.
+
+Applocate::API.register_device
+# returns :id, :uuid, :enrollment_url
+# since the uuid comes from the device it will be nil until the device enrolls
+
+Applocate::API.list_devices
+# return an array of devices containing :id, :uuid, :enrollment_url
+# once the device has enrolled it will have a :uuid but no :enrollment_url
+
 ```
 
 ## Contributing
