@@ -17,7 +17,7 @@ describe Applocate::API do
       expect(subject.secret).to eq('secret')
     end
     it 'uses the base URI to be set to the default' do
-      expect(subject.base_uri).to eq("https://www.applocate.com/api/v1")
+      expect(subject.base_uri).to eq("https://www.applocate.com")
     end
   end
 
@@ -27,7 +27,7 @@ describe Applocate::API do
       results = []
 
       Applocate::API.should_receive(:post)
-        .with('/deploy/profile', { body: device_list.to_json }, Applocate::API.authentication)
+        .with('/deploy/profile', { body: device_list.to_json, headers: Applocate::API.authentication  })
         .and_return(results)
 
       Applocate::API.restrict device_list
@@ -39,7 +39,7 @@ describe Applocate::API do
         results = []
 
         Applocate::API.should_receive(:delete)
-          .with('/deploy/profile', { body: device_list.to_json }, Applocate::API.authentication)
+          .with('/deploy/profile', { body: device_list.to_json, headers: Applocate::API.authentication  })
           .and_return(results)
 
         Applocate::API.unrestrict device_list
@@ -52,7 +52,7 @@ describe Applocate::API do
         results = []
 
         Applocate::API.should_receive(:post)
-          .with('/deploy/app', { body: options.to_json }, Applocate::API.authentication)
+          .with('/deploy/app', { body: options.to_json, headers: Applocate::API.authentication })
           .and_return(results)
 
         Applocate::API.install_app options
@@ -65,7 +65,7 @@ describe Applocate::API do
         results = []
 
         Applocate::API.should_receive(:post)
-          .with('/deploy/app_list', { body: device_list.to_json }, Applocate::API.authentication)
+          .with('/deploy/app_list', { body: device_list.to_json, headers: Applocate::API.authentication })
           .and_return(results)
 
         Applocate::API.app_list device_list

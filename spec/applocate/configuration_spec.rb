@@ -46,7 +46,7 @@ describe Applocate::Configuration do
     end
 
     it 'has a default value for base url' do
-      expect(subject.base_url).to eq("https://www.applocate.com/api/v1")
+      expect(subject.base_url).to eq("https://www.applocate.com")
     end
   end
 end

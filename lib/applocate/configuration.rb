@@ -7,7 +7,7 @@ module Applocate
     def initialize
       @token = ENV["APPLOCATE_TOKEN"]
       @secret = ENV["APPLOCATE_SECRET"]
-      @base_url = ENV["BASE_URL"] || "https://www.applocate.com/api/v1"
+      @base_url = ENV["BASE_URL"] || "https://www.applocate.com"
     end
   end
 
