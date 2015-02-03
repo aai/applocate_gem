@@ -43,7 +43,7 @@ end
 Currently the following methods are supported:
 
 ```ruby
-# expected options -> { uuid: "ABCD-DCCDDC-12394812389-CDC" }
+# expected options -> { uuid: "ABCD-DCCDDC-12394812389-CDC", restrictions: {"allowSafari" => false} }
 Applocate::API.restrict(options)
 # returns a list (Array) of UUIDs with their status from the command.
 
