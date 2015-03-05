@@ -43,32 +43,32 @@ end
 Currently the following methods are supported:
 
 ```ruby
-# expected options -> { uuid: "ABCD-DCCDDC-12394812389-CDC", restrictions: {"allowSafari" => false} }
+# expected options -> { udid: "ABCD-DCCDDC-12394812389-CDC", restrictions: {"allowSafari" => false} }
 Applocate::API.restrict(options)
 # returns a list (Array) of UUIDs with their status from the command.
 
-# expected options -> { uuid: "ABCD-DCCDDC-12394812389-CDC" }
+# expected options -> { udid: "ABCD-DCCDDC-12394812389-CDC" }
 Applocate::API.unrestrict(options)
 # returns a list (Array) of UUIDs with their status from the command.
 
 
-# expected options -> { uuid: "ABCD-DCCDDC-12394812389-CDC", itunes_id: "003274092" }
+# expected options -> { udid: "ABCD-DCCDDC-12394812389-CDC", itunes_id: "003274092" }
 Applocate::API.install_app(options)
 # returns a list (Array) of UUIDs with their status from the command.
 
 
-# expected options -> { uuid: "ABCD-DCCDDC-12394812389-CDC" }
+# expected options -> { udid: "ABCD-DCCDDC-12394812389-CDC" }
 Applocate::API.app_list(options)
 # returns a list (Array) of UUIDs with their apps.
 
 # expected options -> { name: "the name your call the device (255 chars)", identifier: "INTERNAL_CORP_ID_UPTO_255CHAR" }
 Applocate::API.register_device(options)
-# returns :id, :uuid, :enrollment_url
-# since the uuid comes from the device it will be nil until the device enrolls
+# returns :id, :udid, :enrollment_url
+# since the udid comes from the device it will be nil until the device enrolls
 
 Applocate::API.list_devices
-# return an array of devices containing :id, :uuid, :enrollment_url
-# once the device has enrolled it will have a :uuid but no :enrollment_url
+# return an array of devices containing :id, :udid, :enrollment_url
+# once the device has enrolled it will have a :udid but no :enrollment_url
 
 ```
 
