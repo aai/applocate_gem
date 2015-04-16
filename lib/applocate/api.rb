@@ -33,7 +33,6 @@ module Applocate
 
     # expected options { name: "Steve J's iPad Air", identifier: "XXX-123456 APPLE INC.", configuration: "default" }
     def self.register_device(options = {})
-      options = { name: name, identifier: identifier }
       response = self.post('/api/devices', { body: options.to_json, headers: authentication })
       JSON.parse response.body rescue []
     end
