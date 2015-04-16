@@ -3,12 +3,12 @@ require 'spec_helper'
 describe Applocate::API do
   describe 'configuration' do
     subject { Applocate::API }
-    before(:all) {
+    before(:all) do
       Applocate.configure do |config|
         config.token = 'token'
         config.secret = 'secret'
       end
-    }
+    end
 
     it 'uses the configured token' do
       expect(subject.token).to eq('token')

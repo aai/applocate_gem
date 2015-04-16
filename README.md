@@ -62,6 +62,7 @@ Applocate::API.app_list(options)
 # returns a list (Array) of UUIDs with their apps.
 
 # expected options -> { name: "the name your call the device (255 chars)", identifier: "INTERNAL_CORP_ID_UPTO_255CHAR" }
+# NOTE: you can also add an optional configuration: "default" and it will apply a named configuration that matches.
 Applocate::API.register_device(options)
 # returns :id, :udid, :enrollment_url
 # since the udid comes from the device it will be nil until the device enrolls
