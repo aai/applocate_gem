@@ -37,10 +37,15 @@ module Applocate
       JSON.parse response.body rescue []
     end
 
-    # expected options { uuid: "ABCD-DCCDDC-12394812389-CDC" }
     def self.list_devices
       response = self.get('/api/devices', { headers: authentication })
       JSON.parse response.body rescue []
+    end
+
+    # expected params id: 123
+    def self.delete_device(device_id)
+      response = self.delete('/api/devices/#{device_id}', { headers: authentication })
+      response.code == 200
     end
 
     def self.authentication
