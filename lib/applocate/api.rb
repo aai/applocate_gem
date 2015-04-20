@@ -44,7 +44,7 @@ module Applocate
 
     # expected params id: 123
     def self.delete_device(device_id)
-      response = self.delete('/api/devices/#{device_id}', { headers: authentication })
+      response = self.delete("/api/devices/#{device_id}", { headers: authentication })
       response.code == 200
     end
 
