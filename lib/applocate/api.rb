@@ -7,25 +7,25 @@ module Applocate
     headers 'Content-Type' => "application/json"
     format :plain
 
-    # expected options { uuid: "ABCD-DCCDDC-12394812389-CDC" }
+    # expected options { udid: "ABCD-DCCDDC-12394812389-CDC" }
     def self.restrict(options = {})
       response = self.post('/deploy/profile', { body: options.to_json, headers: authentication })
       JSON.parse response.body rescue []
     end
 
-    # expected options { uuid: "ABCD-DCCDDC-12394812389-CDC" }
+    # expected options { udid: "ABCD-DCCDDC-12394812389-CDC" }
     def self.unrestrict(options = {})
       response = self.delete('/deploy/profile', { body: options.to_json, headers: authentication })
       JSON.parse response.body rescue []
     end
 
-    # expected options { uuid: "ABCD-DCCDDC-12394812389-CDC", itunes_id: "284910350" }
+    # expected options { udid: "ABCD-DCCDDC-12394812389-CDC", itunes_id: "284910350" }
     def self.install_app(options = {})
       response = self.post('/deploy/app', { body: options.to_json, headers: authentication })
       JSON.parse response.body rescue []
     end
 
-    # expected options { uuid: "ABCD-DCCDDC-12394812389-CDC" }
+    # expected options { udid: "ABCD-DCCDDC-12394812389-CDC" }
     def self.app_list(options = {})
       response = self.post('/deploy/app_list', { body: options.to_json, headers: authentication })
       JSON.parse response.body rescue []
@@ -42,9 +42,10 @@ module Applocate
       JSON.parse response.body rescue []
     end
 
-    # expected params id: 123
-    def self.delete_device(device_id)
-      response = self.delete("/api/devices/#{device_id}", { headers: authentication })
+    # expected options  { device_id: 12345 }
+    #                OR { udid: "ABCD-DCCDDC-12394812389-CDC" }
+    def self.delete_device(options)
+      response = self.delete("/api/devices", { body: options.to_json, headers: authentication })
       response.code == 200
     end
 

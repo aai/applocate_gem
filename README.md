@@ -71,7 +71,9 @@ Applocate::API.list_devices
 # return an array of devices containing :id, :udid, :enrollment_url
 # once the device has enrolled it will have a :udid but no :enrollment_url
 
-Applocate::API.delete_device(id)
+# expected options -> { udid: "ABCD-DCCDDC-12394812389-CDC" }
+#     OR           -> { id: 1234567 }
+Applocate::API.delete_device(options)
 # delete a device with a given id
 
 ```
