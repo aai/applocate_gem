@@ -31,6 +31,12 @@ module Applocate
       JSON.parse response.body rescue []
     end
 
+    # expected options { udid: "ABCD-DCCDDC-12394812389-CDC" }
+    def self.mdm_app_list(options = {})
+      response = self.post('/deploy/mdm_app_list', { body: options.to_json, headers: authentication })
+      JSON.parse response.body rescue []
+    end
+
     # expected options { name: "Steve J's iPad Air", identifier: "XXX-123456 APPLE INC.", configuration: "default" }
     def self.register_device(options = {})
       response = self.post('/api/devices', { body: options.to_json, headers: authentication })

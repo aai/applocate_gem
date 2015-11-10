@@ -61,6 +61,10 @@ Applocate::API.install_app(options)
 Applocate::API.app_list(options)
 # returns a list (Array) of UUIDs with their apps.
 
+# expected options -> { udid: "ABCD-DCCDDC-12394812389-CDC" }
+Applocate::API.mdm_app_list(options)
+# returns a list (Array) of UUIDs with apps that are being managed by MDM.
+
 # expected options -> { name: "the name your call the device (255 chars)", identifier: "INTERNAL_CORP_ID_UPTO_255CHAR" }
 # NOTE: you can also add an optional configuration: "default" and it will apply a named configuration that matches.
 Applocate::API.register_device(options)
