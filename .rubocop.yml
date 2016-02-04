@@ -5,6 +5,12 @@ AllCops:
     - db/**/*
     - Guardfile
     - applocate.gemspec
+    
+Style/MultilineMethodCallIndentation:
+  Enabled: false
+
+Style/MutableConstant:
+  Enabled: false
 
 Style/RescueModifier:
   Enabled: false

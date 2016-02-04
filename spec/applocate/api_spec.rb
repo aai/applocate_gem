@@ -27,7 +27,7 @@ describe Applocate::API do
       results = []
 
       Applocate::API.should_receive(:post)
-        .with('/deploy/profile', { body: device_list.to_json, headers: Applocate::API.authentication  })
+        .with('/deploy/profile', { body: device_list.to_json, headers: Applocate::API.authentication })
         .and_return(results)
 
       Applocate::API.restrict device_list
@@ -39,7 +39,7 @@ describe Applocate::API do
         results = []
 
         Applocate::API.should_receive(:delete)
-          .with('/deploy/profile', { body: device_list.to_json, headers: Applocate::API.authentication  })
+          .with('/deploy/profile', { body: device_list.to_json, headers: Applocate::API.authentication })
           .and_return(results)
 
         Applocate::API.unrestrict device_list
