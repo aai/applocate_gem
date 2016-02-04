@@ -82,6 +82,16 @@ Applocate::API.delete_device(options)
 
 ```
 
+If you need to change which server you are connecting to, Applocate provides
+access to its internal config options for the secret and the token. For the URL
+it provides the same options as a standard HTTParty connection:
+
+```ruby
+  Applocate.configuration.token = "xxx-xxxxxxx"
+  Applocate.configuration.secret = "shhh... secret"
+  Applocate.base_uri "https://www.applocate.com"
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/applocate/fork )
