@@ -7,6 +7,24 @@ module Applocate
     headers 'Content-Type' => "application/json"
     format :plain
 
+    # expected params, udid = "ABCD-DCCDDC-12394812389-CDC"
+    def self.profile_list(udid)
+      response = self.get("/api/devices/#{udid}/profiles", { headers: authentication })
+      JSON.parse response.body rescue []
+    end
+
+    # expected params: udid = "ABCD-DCCDDC-12394812389-CDC", name = "me.example.restrictions" options { ... Apple MDM Restrictions Profile ... }
+    def self.apply_named_restrictions(udid, name, options = {})
+      response = self.post("/api/devices/#{udid}/profiles/#{name}", { body: options.to_json, headers: authentication })
+      JSON.parse response.body rescue {}
+    end
+
+    # expected params, udid = "ABCD-DCCDDC-12394812389-CDC", name = "me.example.restrictions"
+    def self.remove_named_restrictions(udid, name)
+      response = self.delete("/api/devices/#{udid}/profiles/#{name}", { headers: authentication })
+      JSON.parse response.body rescue {}
+    end
+
     # expected options { udid: "ABCD-DCCDDC-12394812389-CDC" }
     def self.restrict(options = {})
       response = self.post('/deploy/profile', { body: options.to_json, headers: authentication })

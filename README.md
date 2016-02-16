@@ -80,6 +80,19 @@ Applocate::API.list_devices
 Applocate::API.delete_device(options)
 # delete a device with a given id
 
+
+# expected params, udid = "ABCD-DCCDDC-12394812389-CDC"
+Applocate::API.profile_list(udid)
+# returns a list (Array) of install profiles. **excluding any provisioning profiles.**
+
+# expected params: udid = "ABCD-DCCDDC-12394812389-CDC", name = "me.example.restrictions" options { ... Apple MDM Restrictions Profile ... }
+Applocate::API.apply_named_restrictions(udid, name, options)
+# returns the udid and the status of the command as JSON
+
+# expected params, udid = "ABCD-DCCDDC-12394812389-CDC", name = "me.example.restrictions"
+Applocate::API.remove_named_restrictions(udid, name)
+# returns the udid and the status of the command as JSON
+
 ```
 
 If you need to change which server you are connecting to, Applocate provides
