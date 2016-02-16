@@ -1,4 +1,5 @@
 require "httparty"
+require "uri"
 
 module Applocate
   class API
@@ -15,13 +16,17 @@ module Applocate
 
     # expected params: udid = "ABCD-DCCDDC-12394812389-CDC", name = "me.example.restrictions" options { ... Apple MDM Restrictions Profile ... }
     def self.apply_named_restrictions(udid, name, options = {})
-      response = self.post("/api/devices/#{udid}/profiles/#{name}", { body: options.to_json, headers: authentication })
+      escaped_name = CGI::escape(name)
+      escaped_name = escaped_name.gsub(/[.]/, '%2E') unless escaped_name.nil?
+      response = self.post("/api/devices/#{udid}/profiles/#{escaped_name}", { body: options.to_json, headers: authentication })
       JSON.parse response.body rescue {}
     end
 
     # expected params, udid = "ABCD-DCCDDC-12394812389-CDC", name = "me.example.restrictions"
     def self.remove_named_restrictions(udid, name)
-      response = self.delete("/api/devices/#{udid}/profiles/#{name}", { headers: authentication })
+      escaped_name = CGI::escape(name)
+      escaped_name = escaped_name.gsub(/[.]/, '%2E') unless escaped_name.nil?
+      response = self.delete("/api/devices/#{udid}/profiles/#{escaped_name}", { headers: authentication })
       JSON.parse response.body rescue {}
     end
 
