@@ -85,6 +85,18 @@ Applocate::API.delete_device(options)
 Applocate::API.profile_list(udid)
 # returns a list (Array) of install profiles. **excluding any provisioning profiles.**
 
+# expected params, udid = "ABCD-DCCDDC-12394812389-CDC"
+Applocate::API.recent_checkins(udid)
+# returns a list of the checkins for the device for the last two days.
+
+# expected params, udid = "ABCD-DCCDDC-12394812389-CDC"
+Applocate::API.recent_commands(udid)
+# returns a list of commands issued to the device is the last two days.
+
+# expected params, udid = "ABCD-DCCDDC-12394812389-CDC"
+Applocate::API.active_commands(udid)
+# returns a list of the active commands for a device.
+
 # expected params: udid = "ABCD-DCCDDC-12394812389-CDC", name = "me.example.restrictions" options { ... Apple MDM Restrictions Profile ... }
 Applocate::API.apply_named_restrictions(udid, name, options)
 # returns the udid and the status of the command as JSON
