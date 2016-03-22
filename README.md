@@ -44,6 +44,7 @@ Currently the following methods are supported:
 
 ```ruby
 # expected options -> { udid: "ABCD-DCCDDC-12394812389-CDC", restrictions: {"allowSafari" => false} }
+# optional options -> { expires_at: "2000-01-01T00:00:00Z", expires_in: 1337, profile_name: "com.example.my.profile"}
 Applocate::API.restrict(options)
 # returns a list (Array) of UUIDs with their status from the command.
 
@@ -97,7 +98,9 @@ Applocate::API.recent_commands(udid)
 Applocate::API.active_commands(udid)
 # returns a list of the active commands for a device.
 
-# expected params: udid = "ABCD-DCCDDC-12394812389-CDC", name = "me.example.restrictions" options { ... Apple MDM Restrictions Profile ... }
+# expected params: udid = "ABCD-DCCDDC-12394812389-CDC", name = "me.example.restrictions", options = {}
+# required options -> { restrictions: {"allowSafari" => false} }
+# optional options -> { expires_at: "2000-01-01T00:00:00Z", expires_in: 1337 }
 Applocate::API.apply_named_restrictions(udid, name, options)
 # returns the udid and the status of the command as JSON
 
