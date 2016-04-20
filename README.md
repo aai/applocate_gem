@@ -98,6 +98,10 @@ Applocate::API.recent_commands(udid)
 Applocate::API.active_commands(udid)
 # returns a list of the active commands for a device.
 
+# expected params, udid = "ABCD-DCCDDC-12394812389-CDC"
+Applocate::API.restrictions(udid)
+# returns a list of the restrictions for a device.
+
 # expected params: udid = "ABCD-DCCDDC-12394812389-CDC", name = "me.example.restrictions", options = {}
 # required options -> { restrictions: {"allowSafari" => false} }
 # optional options -> { expires_at: "2000-01-01T00:00:00Z", expires_in: 1337 }

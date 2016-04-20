@@ -27,6 +27,12 @@ module Applocate
     end
 
     # expected params, udid = "ABCD-DCCDDC-12394812389-CDC"
+    def self.restrictions(udid)
+      response = self.get("/api/devices/#{udid}/restrictions", { headers: authentication })
+      JSON.parse response.body rescue []
+    end
+
+    # expected params, udid = "ABCD-DCCDDC-12394812389-CDC"
     def self.profile_list(udid)
       response = self.get("/api/devices/#{udid}/profiles", { headers: authentication })
       JSON.parse response.body rescue []
