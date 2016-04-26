@@ -26,6 +26,12 @@ module Applocate
       JSON.parse response.body rescue []
     end
 
+    # expected params, udid = "ABCD-DCCDDC-12394812389-CDC", commmand_uuid = "xxxx-xxx-xxxx-xxxxxxxxxxx"
+    def self.cancel_commmand(udid, commmand_uuid)
+      response = self.get("/api/devices/#{udid}/commands/#{commmand_uuid}", { headers: authentication })
+      JSON.parse response.body rescue {}
+    end
+
     # expected params, udid = "ABCD-DCCDDC-12394812389-CDC"
     def self.restrictions(udid)
       response = self.get("/api/devices/#{udid}/restrictions", { headers: authentication })

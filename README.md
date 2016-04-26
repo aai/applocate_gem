@@ -94,6 +94,10 @@ Applocate::API.recent_checkins(udid)
 Applocate::API.recent_commands(udid)
 # returns a list of commands issued to the device is the last two days.
 
+# expected params, udid = "ABCD-DCCDDC-12394812389-CDC", commmand_uuid = "xxxx-xxx-xxxx-xxxxxxxxxxx"
+Applocate::API.cancel_commmand(udid, command_uuid)
+# returns the cancelled command.
+
 # expected params, udid = "ABCD-DCCDDC-12394812389-CDC"
 Applocate::API.active_commands(udid)
 # returns a list of the active commands for a device.
