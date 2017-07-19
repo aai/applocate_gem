@@ -99,6 +99,13 @@ module Applocate
       JSON.parse response.body rescue []
     end
 
+    # expected options udid_or_identifier = 12345 OR udid_or_identifier = "ABCD-DCCDDC-12394812389-CDC"
+    # NOTE: this may return more than one device.
+    def self.get_devices(udid_or_identifier)
+      response = self.get("/api/devices/#{udid_or_identifier}", { headers: authentication })
+      JSON.parse response.body rescue []
+    end
+
     # expected options  { device_id: 12345 }
     #                OR { udid: "ABCD-DCCDDC-12394812389-CDC" }
     def self.delete_device(options)
