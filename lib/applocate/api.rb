@@ -70,6 +70,18 @@ module Applocate
       JSON.parse response.body rescue []
     end
 
+    # expected options { udid: "ABCD-DCCDDC-12394812389-CDC", vpn_username: "123456", vpn_password: "p@ssw0rd" }
+    def self.install_vpn(options = {})
+      response = self.post('/deploy/vpn', { body: options.to_json, headers: authentication })
+      JSON.parse response.body rescue []
+    end
+
+    # expected options { udid: "ABCD-DCCDDC-12394812389-CDC" }
+    def self.remove_vpn(options = {})
+      response = self.delete('/deploy/vpn', { body: options.to_json, headers: authentication })
+      JSON.parse response.body rescue []
+    end
+
     # expected options { udid: "ABCD-DCCDDC-12394812389-CDC", itunes_id: "284910350" }
     def self.install_app(options = {})
       response = self.post('/deploy/app', { body: options.to_json, headers: authentication })

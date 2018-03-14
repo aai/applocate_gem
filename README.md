@@ -52,11 +52,17 @@ Applocate::API.restrict(options)
 Applocate::API.unrestrict(options)
 # returns a list (Array) of UUIDs with their status from the command.
 
+# expected options { udid: "ABCD-DCCDDC-12394812389-CDC", vpn_username: "123456", vpn_password: "p@ssw0rd" }
+Applocate::API.self.install_vpn(options)
+# returns a list (Array) of UUIDs with their status from the command.
+
+# expected options { udid: "ABCD-DCCDDC-12394812389-CDC" }
+Applocate::API.self.remove_vpn(options)
+# returns a list (Array) of UUIDs with their status from the command.
 
 # expected options -> { udid: "ABCD-DCCDDC-12394812389-CDC", itunes_id: "003274092" }
 Applocate::API.install_app(options)
 # returns a list (Array) of UUIDs with their status from the command.
-
 
 # expected options -> { udid: "ABCD-DCCDDC-12394812389-CDC" }
 Applocate::API.app_list(options)
@@ -80,7 +86,6 @@ Applocate::API.list_devices
 #     OR           -> { id: 1234567 }
 Applocate::API.delete_device(options)
 # delete a device with a given id
-
 
 # expected params, udid = "ABCD-DCCDDC-12394812389-CDC"
 Applocate::API.profile_list(udid)
